@@ -1,0 +1,65 @@
+syntax = "proto3";
+
+package proto;
+option go_package = "./;proto";
+
+message RequestHitungLuasPersegi {
+  int32 Panjang =1;
+  int32 Lebar=2;
+}
+
+message RequestHitungKelilingPersegi {
+  int32 sisi = 1;
+}
+
+message RequestHitungLuasLingkaran {
+  float diameter = 1;
+}
+
+message RequestHitungKelilingLingkaran {
+  float diameter = 1;
+}
+
+message RequestHitungLuasSegitiga {
+  int32 alas = 1;
+  int32 tinggi = 2;
+}
+
+message RequestHitungKelilingSegitiga {
+  int32 sisi1 = 1;
+  int32 sisi2 = 2;
+  int32 sisi3 = 3;
+}
+
+message ResponseLuasPersegi {
+  int32 Luas =1;
+}
+
+message ResponseKelilingPersegi {
+  int32 keliling = 1;
+}
+
+message ResponseLuasLingkaran {
+  float luas = 1;
+}
+
+message ResponseKelilingLingkaran {
+  float keliling = 1;
+}
+
+message ResponseLuasSegitiga {
+  float luas = 1;
+}
+
+message ResponseKelilingSegitiga {
+  int32 keliling = 1;
+}
+
+service BangunDatar {
+  rpc HitungLuasPersegi(RequestHitungLuasPersegi) returns (ResponseLuasPersegi);
+  rpc HitungKelilingPersegi(RequestHitungKelilingPersegi) returns (ResponseKelilingPersegi);
+  rpc HitungLuasLingkaran(RequestHitungLuasLingkaran) returns (ResponseLuasLingkaran);
+  rpc HitungKelilingLingkaran(RequestHitungKelilingLingkaran) returns (ResponseKelilingLingkaran);
+  rpc HitungLuasSegitiga(RequestHitungLuasSegitiga) returns (ResponseLuasSegitiga);
+  rpc HitungKelilingSegitiga(RequestHitungKelilingSegitiga) returns (ResponseKelilingSegitiga);
+}
